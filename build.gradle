@@ -1,0 +1,55 @@
+plugins {
+    id 'groovy'
+    id 'java'
+    id 'idea'
+}
+
+ext {
+    jenkinsVersion = '2.462.2'
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+sourceSets {
+    main {
+        groovy {
+            srcDirs = ['vars', 'src']
+        }
+    }
+
+    test {
+        groovy {
+            srcDirs = ['test']
+        }
+    }
+}
+
+group = 'com.example.pipeline'
+version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url 'https://repo.jenkins-ci.org/public/'
+    }
+}
+
+dependencies {
+    implementation 'org.codehaus.groovy:groovy-all:3.0.22'
+    testImplementation 'junit:junit:4.13.2'
+
+    implementation "org.jenkins-ci.main:jenkins-core:${jenkinsVersion}"
+
+    implementation 'org.jenkinsci.plugins:pipeline-model-definition:2.2214.vb_b_34b_2ea_9b_83'
+}
