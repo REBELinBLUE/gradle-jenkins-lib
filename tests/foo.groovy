@@ -1,6 +1,6 @@
 import org.junit.Test
 
-class fOOTest {
+class FooTest {
     /**
      * Use Groovy metaclass programming to add methods to the Jenkins pipeline shared library exposed class.
      * This allows for unit testing of classes that makes use of Jenkins pipeline steps, such as
